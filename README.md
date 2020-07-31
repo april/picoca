@@ -8,7 +8,7 @@ On first run, NanoCA will generate a keypair and a root certificate in the
 `certificates` subdirectory, and will reuse that same keypair and root
 certificate unless they are deleted.
 
-On each run, NanoCA will generate a keypair and sign an end-entity (leaf)
+On each further run, NanoCA will generate a keypair and sign an end-entity (leaf)
 certificate for that keypair. The certificate will contain a list of DNS names
 and/or IP addresses from the command line flags. The key and certificate are
 placed in the same directory as the root key and certificate, with a file name
@@ -16,7 +16,12 @@ chosen based upon the first domain name or IP address specified on the command
 line. It will overwrite existing keys and certificates, e.g. for renewals.
 
 The certificate will have a validity of 366 days, although this can be changed
-by using the `--lifespan` flag.
+by using the `--lifespan` flag. You can also change the directory where the
+root and end-entity certificates are stored by using the `--cert-path` flag.
+
+The code is designed to be simple and easy-to-read, for educational purposes.
+If you stumble across a decision that doesn't make sense, please open an
+[issue](https://github.com/april/nanoca/issues) so that it may be addressed.
 
 NanoCA should work with Python 2.7, despite the incredible soul-rendering pain
 this has caused me.
