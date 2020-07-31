@@ -56,7 +56,7 @@ $ nanoca bar.org baz.net 127.0.0.1 2001:0db8:85a3:0000:0000:8a2e:0370:7334 qux.i
 Successfully wrote files to: certificates/bar.org.pem and certificates/bar.org.key
 
 # Store the certs in /etc/nanoca instead, for use by multiple applications
-$ nanoca --cert-path /etc/nanoca bar.org baz.net 127.0.0.1 2001:0db8:85a3:0000:0000:8a2e:0370:7334 qux.io                                                                                                               [18:43:53]
+$ nanoca --cert-path /etc/nanoca bar.org baz.net 127.0.0.1 qux.io                                                                                                               [18:43:53]
 Successfully initialized NanoCA to: /etc/nanoca/__root__.pem and /etc/nanoca/__root__.key
 Successfully wrote files to: /etc/nanoca/bar.org.pem and /etc/nanoca/bar.org.key
 ```
