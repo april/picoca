@@ -45,7 +45,7 @@ optional arguments:
 
 # Usage
 
-```
+```bash
 # Initialize the certificate authority and sign a certificate for "foo.com":
 $ nanoca foo.com
 Successfully initialized NanoCA to: certificates/__root__.key and certificates/__root__.pem
@@ -54,7 +54,11 @@ Successfully wrote files to: certificates/foo.com.pem and certificates/foo.com.k
 # Generate another certificate using the same certificate authority generated above
 $ nanoca bar.org baz.net 127.0.0.1 2001:0db8:85a3:0000:0000:8a2e:0370:7334 qux.io
 Successfully wrote files to: certificates/bar.org.pem and certificates/bar.org.key
+```
 
+# Verification
+
+```bash
 # Verify that a proper certificate was generated
 $ openssl verify -x509_strict -purpose sslclient -purpose sslserver -CAfile certificates/__root__.pem certificates/bar.org.pem
 certificates/bar.org.pem: OK
@@ -149,11 +153,16 @@ Certificate:
 # Verify that TLS works
 $ openssl s_server -quiet -www -port 443 -cert certificates/bar.org.pem -key certificates/bar.org.key
 
+# And launching curl in a separate terminal
 $ curl --cacert certificates/__root__.pem --output /dev/null "https://127.0.0.1/"
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  5070    0  5070    0     0  1650k      0 --:--:-- --:--:-- --:--:-- 1650k
 ```
+
+# Authors
+
+Thus far, [April King](https://pokeinthe.io) (april@pokeinthe.io) is the only author.
 
 # Credits
 
