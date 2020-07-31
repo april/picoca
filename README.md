@@ -11,9 +11,9 @@ certificate unless they are deleted.
 On each run, NanoCA will generate a keypair and sign an end-entity (leaf)
 certificate for that keypair. The certificate will contain a list of DNS names
 and/or IP addresses from the command line flags. The key and certificate are
-placed in a new directory whose name is chosen as the first domain name chosen
-on the command line. It will overwrite existing keys and certificates, e.g. for
-renewals.
+placed in the same directory as the root key and certificate, with a file name
+chosen based upon the first domain name or IP address specified on the command
+line. It will overwrite existing keys and certificates, e.g. for renewals.
 
 The certificate will have a validity of 366 days, although this can be changed
 by using the `--lifespan` flag.
