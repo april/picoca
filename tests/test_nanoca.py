@@ -7,7 +7,7 @@ from nanoca.main import main
 
 def _openssl_x509(cert_path, *args):
     proc = subprocess.Popen(
-        ["openssl", "x509", "-in", cert_path, "-noout", *args],
+        ["openssl", "x509", "-in", cert_path, "-noout"] + [arg for arg in args],
         stdout=subprocess.PIPE,
         stderr=None,
     )
@@ -22,8 +22,8 @@ def _openssl_x509(cert_path, *args):
 def test_end_to_end_openssl_verify(tmp_path):
     # execute as if calling: helpful --cert-path <path> foo.com bar.baz
     main(["--cert-path", str(tmp_path), "foo.com", "bar.baz", "127.0.0.1"])
-    root_path = os.path.join(tmp_path, "__root__.pem")
-    cert_path = os.path.join(tmp_path, "foo.com.pem")
+    root_path = os.path.join(str(tmp_path), "__root__.pem")
+    cert_path = os.path.join(str(tmp_path), "foo.com.pem")
 
     # now we're gonna call openssl to make sure that everything is okay with root
     subject = _openssl_x509(root_path, "-subject").strip().split("=", 1)[1]
