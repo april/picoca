@@ -2,8 +2,8 @@ import argparse
 import os.path
 import sys
 
-from nanoca.ca import CertificateAuthority
-from nanoca.crypto import generate_private_key, to_pem
+from picoca.ca import CertificateAuthority
+from picoca.crypto import generate_private_key, to_pem
 
 # Python 2.x support makes me so very sad
 if sys.version_info[0] >= 3:
@@ -53,7 +53,7 @@ def main(args=None):
             __write_pem_to_disk(ca_cert_path, CA.certificate)
             __write_pem_to_disk(ca_key_path, CA.private_key)
 
-            print("Successfully initialized NanoCA to: {0} and {1}".format(ca_cert_path, ca_key_path))
+            print("Successfully initialized PicoCA to: {0} and {1}".format(ca_cert_path, ca_key_path))
     except:
         print("Error: Unable to write {0} and {1} to disk.".format(ca_cert_path, ca_key_path))
         sys.exit(1)

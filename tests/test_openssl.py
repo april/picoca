@@ -2,7 +2,7 @@ import os.path
 import subprocess
 
 
-from nanoca.main import main
+from picoca.main import main
 
 
 def _openssl_x509(cert_path, *args):
@@ -27,10 +27,10 @@ def test_end_to_end_openssl_verify(tmp_path):
 
     # now we're gonna call openssl to make sure that everything is okay with root
     subject = _openssl_x509(root_path, "-subject").strip().split("=", 1)[1]
-    assert subject == "CN = NanoCA Root Certificate Authority, OU = NanoCA, O = NanoCA"
+    assert subject == "CN = PicoCA Root Certificate Authority, OU = PicoCA, O = PicoCA"
 
     issuer = _openssl_x509(root_path, "-issuer").strip().split("=", 1)[1]
-    assert issuer == "CN = NanoCA Root Certificate Authority, OU = NanoCA, O = NanoCA"
+    assert issuer == "CN = PicoCA Root Certificate Authority, OU = PicoCA, O = PicoCA"
 
     assert issuer == subject
 

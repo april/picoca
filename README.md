@@ -1,14 +1,14 @@
-NanoCA is a simple CA intended for use in situations where the CA operator
+PicoCA is a simple CA intended for use in situations where the CA operator
 also operates each host where a certificate will be used. It automatically
 generates both a key and a certificate when asked to produce a certificate.
-It does not offer OCSP or CRL services. NanoCA is appropriate, for instance,
+It does not offer OCSP or CRL services. PicoCA is appropriate, for instance,
 for generating certificates for RPC systems or microservices.
 
-On first run, NanoCA will generate a keypair and a root certificate in the
+On first run, PicoCA will generate a keypair and a root certificate in the
 `certificates` subdirectory, and will reuse that same keypair and root
 certificate unless they are deleted.
 
-On each further run, NanoCA will generate a keypair and sign an end-entity (leaf)
+On each further run, PicoCA will generate a keypair and sign an end-entity (leaf)
 certificate for that keypair. The certificate will contain a list of DNS names
 and/or IP addresses from the command line flags. The key and certificate are
 placed in the same directory as the root key and certificate, with a file name
@@ -21,9 +21,9 @@ root and end-entity certificates are stored by using the `--cert-path` flag.
 
 The code is designed to be simple and easy-to-read, for educational purposes.
 If you stumble across a decision that doesn't make sense, please open an
-[issue](https://github.com/april/nanoca/issues) so that it may be addressed.
+[issue](https://github.com/april/picoca/issues) so that it may be addressed.
 
-NanoCA should work with Python 2.7, despite the incredible soul-rendering pain
+PicoCA should work with Python 2.7, despite the incredible soul-rendering pain
 this has caused me.
 
 # Installation
@@ -31,8 +31,8 @@ this has caused me.
 ```bash
 $ python setup.py install
 
-$ nanoca --help
-usage: nanoca [-h] [--cert-path path] [--lifespan days] hostname [hostname ...]
+$ picoca --help
+usage: picoca [-h] [--cert-path path] [--lifespan days] hostname [hostname ...]
 
 positional arguments:
   hostname          domains and IP addresses to add to certificate
@@ -47,18 +47,18 @@ optional arguments:
 
 ```bash
 # Initialize the certificate authority and sign a certificate for "foo.com":
-$ nanoca foo.com
-Successfully initialized NanoCA to: certificates/__root__.key and certificates/__root__.pem
+$ picoca foo.com
+Successfully initialized PicoCA to: certificates/__root__.key and certificates/__root__.pem
 Successfully wrote files to: certificates/foo.com.pem and certificates/foo.com.key
 
 # Generate another certificate using the same certificate authority generated above
-$ nanoca bar.org baz.net 127.0.0.1 2001:0db8:85a3:0000:0000:8a2e:0370:7334 qux.io
+$ picoca bar.org baz.net 127.0.0.1 2001:0db8:85a3:0000:0000:8a2e:0370:7334 qux.io
 Successfully wrote files to: certificates/bar.org.pem and certificates/bar.org.key
 
-# Store the certs in /etc/nanoca instead, for use by multiple applications
-$ nanoca --cert-path /etc/nanoca bar.org baz.net 127.0.0.1 qux.io
-Successfully initialized NanoCA to: /etc/nanoca/__root__.pem and /etc/nanoca/__root__.key
-Successfully wrote files to: /etc/nanoca/bar.org.pem and /etc/nanoca/bar.org.key
+# Store the certs in /etc/picoca instead, for use by multiple applications
+$ picoca --cert-path /etc/picoca bar.org baz.net 127.0.0.1 qux.io
+Successfully initialized PicoCA to: /etc/picoca/__root__.pem and /etc/picoca/__root__.key
+Successfully wrote files to: /etc/picoca/bar.org.pem and /etc/picoca/bar.org.key
 ```
 
 # Verification
@@ -76,7 +76,7 @@ Certificate:
         Serial Number:
             4d:c5:c9:d7:ca:7e:48:40:85:36:d3:1d:79:69:70:2e
         Signature Algorithm: ecdsa-with-SHA256
-        Issuer: CN = NanoCA Root Certificate Authority, OU = NanoCA, O = NanoCA
+        Issuer: CN = PicoCA Root Certificate Authority, OU = PicoCA, O = PicoCA
         Validity
             Not Before: Jul 30 11:36:31 2020 GMT
             Not After : Aug  1 11:36:31 2021 GMT
@@ -122,11 +122,11 @@ Certificate:
         Serial Number:
             f4:c4:4d:84:5f:b8:42:03:b6:cf:56:ad:ac:09:14:dd
         Signature Algorithm: ecdsa-with-SHA384
-        Issuer: CN = NanoCA Root Certificate Authority, OU = NanoCA, O = NanoCA
+        Issuer: CN = PicoCA Root Certificate Authority, OU = PicoCA, O = PicoCA
         Validity
             Not Before: Jul 30 11:36:31 2020 GMT
             Not After : Jul 30 11:36:31 2040 GMT
-        Subject: CN = NanoCA Root Certificate Authority, OU = NanoCA, O = NanoCA
+        Subject: CN = PicoCA Root Certificate Authority, OU = PicoCA, O = PicoCA
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (384 bit)
@@ -171,7 +171,7 @@ Thus far, [April King](https://pokeinthe.io) (april@pokeinthe.io) is the only au
 
 # Credits
 
-NanoCA was directly inspired by [Jacob Hoffman-Andrew](https://github.com/jsha)'s
+PicoCA was directly inspired by [Jacob Hoffman-Andrew](https://github.com/jsha)'s
 [minica](https://github.com/jsha/minica), and builds on top of the towering amount
 of work done in [pyca/cryptography](https://cryptography.io) by
 [Alex Gaynor](https://github.com/alex), [Paul Kehrer](https://github.com/reaperhulk) and

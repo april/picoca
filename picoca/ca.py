@@ -43,9 +43,9 @@ class CertificateAuthority:
                 private_key=self.private_key,
                 lifespan=CA_LIFESPAN,
                 ca=True,
-                cn=u"NanoCA Root Certificate Authority",
-                o=u"NanoCA",
-                ou=u"NanoCA",
+                cn=u"PicoCA Root Certificate Authority",
+                o=u"PicoCA",
+                ou=u"PicoCA",
             )
 
             self.certificate = self.sign(certificate, certificate._subject_name)

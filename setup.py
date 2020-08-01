@@ -21,8 +21,8 @@ extras = {
 }
 
 setup(
-    name="nanoca",
-    description="NanoCA is a simple CA intended for use for education and self-hosting purposes",
+    name="picoca",
+    description="PicoCA is a simple CA intended for use for education and self-hosting purposes",
     author="April King",
     author_email="april@pokeinthe.io",
     classifiers=[
@@ -43,17 +43,17 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Topic :: Security :: Cryptography",
     ],
-    entry_points={"console_scripts": ["nanoca=nanoca.main:main"]},
+    entry_points={"console_scripts": ["picoca=picoca.main:main"]},
     include_package_data=True,
     install_requires=requirements,
     long_description=readme,
     long_description_content_type='text/markdown',
-    keywords="nanoca NanoCA certificate authority",
-    packages=find_packages(include=["nanoca"]),
+    keywords="picoca PicoCA certificate authority",
+    packages=find_packages(include=["picoca"]),
     test_suite="tests",
     tests_require=test_requirements,
     extras_require=extras,
-    url="https://github.com/april/nanoca",
+    url="https://github.com/april/picoca",
     version="1.0.0",
     zip_safe=False,
 )

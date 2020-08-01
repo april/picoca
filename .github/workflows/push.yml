@@ -1,4 +1,4 @@
-name: nanoca-push
+name: picoca-push
 
 on:
   push:
@@ -23,6 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e ".[test]"
     - name: Lint with flake8
-      run: flake8 nanoca tests
+      run: flake8 picoca tests
     - name: Test with Pytest
       run: pytest tests
