@@ -28,8 +28,12 @@ this has caused me.
 
 # Installation
 
+PicoCA can be installed via `pip` with `pip install picoca`.
+
+# Usage
+
 ```bash
-$ python setup.py install
+$ pip install picoca
 
 $ picoca --help
 usage: picoca [-h] [--cert-path path] [--lifespan days] hostname [hostname ...]
@@ -43,7 +47,7 @@ optional arguments:
   --lifespan days   Number of days for certificate to be valid (default: 366)
 ```
 
-# Usage
+# Examples
 
 ```bash
 # Initialize the certificate authority and sign a certificate for "foo.com":
