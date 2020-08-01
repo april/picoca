@@ -1,4 +1,4 @@
-name: picoca-push
+name: build
 
 on:
   push:
